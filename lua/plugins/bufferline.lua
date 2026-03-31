@@ -1,5 +1,4 @@
 vim.opt.termguicolors = true
-
 require("bufferline").setup {
     options = {
         -- 使用 nvim 内置lsp
@@ -13,3 +12,4 @@ require("bufferline").setup {
         }}
     }
 }
+require('transparent').clear_prefix('BufferLine')

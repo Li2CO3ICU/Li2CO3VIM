@@ -26,6 +26,7 @@ local plugins = {
 	"nvim-lualine/lualine.nvim",  -- dock status
 	"nvim-tree/nvim-tree.lua",  -- as name
 	"nvim-tree/nvim-web-devicons", -- tree icon
+	"xiyaowong/transparent.nvim",
 	"christoomey/vim-tmux-navigator", -- ctl-hjkl
 	{
 		"nvim-treesitter/nvim-treesitter", -- highlight

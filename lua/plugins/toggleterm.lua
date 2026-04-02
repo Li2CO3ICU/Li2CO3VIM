@@ -1,6 +1,5 @@
 require("toggleterm").setup({
-  open_mapping = [[<leader>t]],
+  open_mapping = [[<A-p>]],
   direction = "float",
-  shell = "/bin/kitty",
-  close_on_exit = false, -- ⭐ 防止直接消失
+  shell = "/bin/fish",
 })

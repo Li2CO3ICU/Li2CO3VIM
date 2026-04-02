@@ -1,15 +1,48 @@
-vim.opt.termguicolors = true
-require("bufferline").setup {
-    options = {
-        -- 使用 nvim 内置lsp
-        diagnostics = "nvim_lsp",
-        -- 左侧让出 nvim-tree 的位置
-        offsets = {{
-            filetype = "NvimTree",
-            text = "File Explorer",
-            highlight = "Directory",
-            text_align = "left"
-        }}
-    }
-}
-require('transparent').clear_prefix('BufferLine')
+--vim.opt.termguicolors = true
+--require("bufferline").setup {
+--    options = {
+--        -- 使用 nvim 内置lsp
+--        diagnostics = "nvim_lsp",
+--        -- 左侧让出 nvim-tree 的位置
+--        offsets = {{
+--            filetype = "NvimTree",
+--            text = "File Explorer",
+--            highlight = "Directory",
+--            text_align = "left"
+--        }}
+--    }
+--}
+--require('transparent').clear_prefix('bufferline')
+--return {
+--  "akinsho/bufferline.nvim",
+--  dependencies = { "nvim-tree/nvim-web-devicons", "xiyaowong/transparent.nvim" },
+--  config = function()
+--    -- 开启真彩色支持
+--    vim.opt.termguicolors = true
+--
+--    -- 1. Bufferline 配置
+--    require("bufferline").setup {
+--      options = {
+--        -- 使用 nvim 内置 lsp 诊断显示
+--        diagnostics = "nvim_lsp",
+--        -- 侧边栏偏移：为 NvimTree 留出空间
+--        offsets = {
+--          {
+--            filetype = "NvimTree",
+--            text = "File Explorer",
+--            highlight = "Directory",
+--            text_align = "left",
+--          },
+--        },
+--      },
+--    }
+--
+--    -- 2. 透明处理：确保 bufferline 相关的背景被清除
+--    -- 这里用 pcall 是为了防止 transparent 插件没安装时导致整体崩溃
+--    local status, transparent = pcall(require, "transparent")
+--    if status then
+--      transparent.clear_prefix('bufferline')
+--    end
+--  end
+--}
+--

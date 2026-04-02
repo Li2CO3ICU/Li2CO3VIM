@@ -21,6 +21,7 @@ local plugins = {
     ---@type ibl.config
     opts = {},
 	},
+	{'akinsho/toggleterm.nvim', version = "*", config = true},
 	"folke/tokyonight.nvim", -- tokyonight theme
 	"catppuccin/nvim",	--catppucin theme
 	"nvim-lualine/lualine.nvim",  -- dock status
@@ -35,7 +36,6 @@ local plugins = {
 			require 'nvim-treesitter.install'.compilers = { "gcc" } 
 		end,
 	},
-	{'akinsho/toggleterm.nvim', version = "*", config = true}, -- terminal<A-p>
 	{"sphamba/smear-cursor.nvim"},
 	{
     "williamboman/mason.nvim",

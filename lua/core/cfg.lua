@@ -37,12 +37,7 @@ opt.termguicolors = true
 opt.signcolumn = "yes"
 
 -- 设置主题
---vim.cmd[[colorscheme tokyonight-moon]]
 vim.cmd.colorscheme "catppuccin-mocha" --latte,frappe,macchiato,mocha
 
---设置pwsh
-vim.opt.shell = "pwsh"
-vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
-vim.opt.shellquote = ""
-vim.opt.shellxquote = ""
+vim.opt.shell = "/usr/bin/fish"
 

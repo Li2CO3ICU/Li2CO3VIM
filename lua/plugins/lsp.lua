@@ -1,78 +1,62 @@
--- mason 安装和 UI 配置
-require("mason").setup({
-  ui = {
-      icons = {
+return {
+  -- 声明插件依赖
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/cmp-nvim-lsp",
+  },
+  config = function()
+    -- 1. Mason 初始化
+    require("mason").setup({
+      ui = {
+        icons = {
           package_installed = "✓",
           package_pending = "➜",
           package_uninstalled = "✗",
+        },
       },
-  },
-})
+    })
 
--- mason-lspconfig 确保安装的 LSP
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "lua_ls",                -- Lua
-    "rust_analyzer",         -- Rust
-    "fortls",                -- Fortran
-    "pyright",               -- Python
-    "clangd",                -- C / C++
-    "jdtls",                 -- Java
-    "kotlin_language_server" -- Kotlin
-  },
-})
+    -- 2. Mason-LSPConfig 初始化
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "lua_ls", "rust_analyzer", "fortls", "pyright", 
+        "clangd", "jdtls", "kotlin_language_server"
+      },
+    })
 
--- nvim-cmp 自动完成能力
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    -- 3. LSP 能力配置 (用于 nvim-cmp)
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local lspconfig = require("lspconfig")
 
--- Lua LSP 配置
-require("lspconfig").lua_ls.setup {
-  capabilities = capabilities,
+    -- 4. 循环配置所有 LSP 服务（更简洁的写法）
+    local servers = { 
+      "lua_ls", "rust_analyzer", "fortls", "pyright", 
+      "clangd", "jdtls", "kotlin_language_server" 
+    }
+
+    for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup({
+        capabilities = capabilities,
+      })
+    end
+
+    -- 5. 全局诊断配置
+    vim.diagnostic.config({
+      virtual_text = { prefix = "●" },
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+    })
+
+    -- 设置诊断符号
+    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
+  end
 }
-
--- Rust LSP 配置
-require("lspconfig").rust_analyzer.setup {
-  capabilities = capabilities,
-}
-
--- Fortran LSP 配置
-require("lspconfig").fortls.setup {
-  capabilities = capabilities,
-}
-
--- Python LSP 配置
-require("lspconfig").pyright.setup {
-  capabilities = capabilities,
-}
-
--- C / C++ LSP 配置
-require("lspconfig").clangd.setup {
-  capabilities = capabilities,
-}
-
--- Java LSP 配置
-require("lspconfig").jdtls.setup {
-  capabilities = capabilities,
-}
-
--- Kotlin LSP 配置
-require("lspconfig").kotlin_language_server.setup {
-  capabilities = capabilities,
-}
-
--- 全局诊断配置
-vim.diagnostic.config({
-  virtual_text = { prefix = "●" },
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-})
-
--- 可选：为诊断设置左侧符号
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
 

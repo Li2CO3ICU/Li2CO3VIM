@@ -13,6 +13,9 @@ return {
         RainbowGreen = { fg = "#98C379" },
         RainbowViolet = { fg = "#C678DD" },
         RainbowCyan = { fg = "#56B6C2" },
+
+		NormalFloat = { bg = "none" },
+		TelescopeBorder = { bg = "none" },
       }
     end,
     integrations = {

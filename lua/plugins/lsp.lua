@@ -22,8 +22,11 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls", "rust_analyzer", "fortls", "pyright", 
-        "clangd", "jdtls", "kotlin_language_server"
-      },
+        "clangd", "jdtls", "kotlin_language_server",
+        "glsl_analyzer", "ts_ls", "gopls", "html", "cssls",            
+  			"jsonls", "yamlls", "bashls", "dockerls", "taplo",            
+
+			}
     })
 
     -- 3. LSP 能力配置 (用于 nvim-cmp)

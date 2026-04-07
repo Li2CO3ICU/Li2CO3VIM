@@ -1,3 +1,4 @@
+
 require("plugins.lazy")
 require("core.cfg")
 require("core.keymap")
@@ -6,8 +7,6 @@ require("plugins.nvim-tree")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.toggleterm")
---require("plugins.smear-cursor")
-require("plugins.lsp")
 require("plugins.cmp")
 require("plugins.autopairs")
 require("plugins.comment")

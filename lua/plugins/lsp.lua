@@ -1,5 +1,4 @@
 return {
-  -- 声明插件依赖
   "neovim/nvim-lspconfig",
   dependencies = {
     "williamboman/mason.nvim",
@@ -7,59 +6,41 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
-    -- 1. Mason 初始化
-    require("mason").setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
-      },
-    })
+    require("mason").setup()
 
-    -- 2. Mason-LSPConfig 初始化
+    local lspconfig = require("lspconfig")
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "lua_ls", "rust_analyzer", "fortls", "pyright", 
-        "clangd", "jdtls", "kotlin_language_server",
-        "glsl_analyzer", "ts_ls", "gopls", "html", "cssls",            
-  			"jsonls", "yamlls", "bashls", "dockerls", "taplo",            
-
-			}
+        "lua_ls", "rust_analyzer", "pyright", "clangd", "ts_ls", "taplo"
+      }
     })
 
-    -- 3. LSP 能力配置 (用于 nvim-cmp)
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local lspconfig = require("lspconfig")
+    -- 改进：自动配置所有通过 Mason 安装的 LSP
+    require("mason-lspconfig").setup_handlers({
+      function(server_name) -- 默认处理函数
+        lspconfig[server_name].setup({
+          capabilities = capabilities,
+        })
+      end,
+      -- 你可以在这里为特定 LSP 写特殊配置
+      -- ["rust_analyzer"] = function()
+      --   lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+      -- end,
+    })
 
-    -- 4. 循环配置所有 LSP 服务（更简洁的写法）
-    local servers = { 
-      "lua_ls", "rust_analyzer", "fortls", "pyright", 
-      "clangd", "jdtls", "kotlin_language_server" 
-    }
-
-    for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup({
-        capabilities = capabilities,
-      })
-    end
-
-    -- 5. 全局诊断配置
+    -- 全局诊断配置保持不变
     vim.diagnostic.config({
-      virtual_text = { prefix = "●" },
+      virtual_text = {
+    	spacing = 4,
+    	source = "if_many", -- 如果有多个来源则显示来源（比如 rust-analyzer）
+    	prefix = "■",       -- 提示信息前的符号
+  	},
       signs = true,
       underline = true,
-      update_in_insert = false,
+      update_in_insert = true, -- 改为 true 可以在打字时实时看到报错
       severity_sort = true,
     })
-
-    -- 设置诊断符号
-    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
   end
 }
-

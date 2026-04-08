@@ -225,7 +225,6 @@ local plugins = {
 	"hrsh7th/cmp-path",
 
 	-- 编辑辅助
-	"numToStr/Comment.nvim",
 	"windwp/nvim-autopairs",
 	"akinsho/bufferline.nvim",
 	"lewis6991/gitsigns.nvim",

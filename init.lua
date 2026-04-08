@@ -1,4 +1,3 @@
-
 require("plugins.lazy")
 require("core.cfg")
 require("core.keymap")
@@ -9,7 +8,6 @@ require("plugins.treesitter")
 require("plugins.toggleterm")
 require("plugins.cmp")
 require("plugins.autopairs")
-require("plugins.comment")
 require("plugins.bufferline")
 require("plugins.gitsigns")
 require("plugins.fine-cmdline")

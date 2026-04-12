@@ -85,13 +85,13 @@ function()
 end,
       --{ section = "header", padding = 1 },
       { section = "keys", gap = 1, padding = 1 },
-      startup, -- ⭐ 把你的 startup 接进来（关键）
+      startup,
     },
 
     preset = {
-      pick = nil, -- 防止默认覆盖
+      pick = nil,
 
-      -- 🧠 keys（你给的）
+     
       keys = {
         { icon = " ", key = "f", desc = "查找文件", action = ":lua Snacks.dashboard.pick('files')" },
         { icon = " ", key = "n", desc = "新建文件", action = ":ene | startinsert" },
@@ -108,7 +108,7 @@ end,
         { icon = " ", key = "q", desc = "退    出", action = ":qa" },
       },
 
-      -- 🧬 header（你给的）
+      
       --header = [[
 --██╗     ██╗██████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 --██║     ██║╚════██╗██╔════╝██╔═══██╗╚════██╗██║   ██║██║████╗ ████║
@@ -120,8 +120,7 @@ end,
     },
   },
 })
-
--- 🐾 自动打开 dashboard
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyDone",
   callback = function()
@@ -136,10 +135,8 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 
-
--- ==========================================
--- 🐾 自定义剪贴板提示功能 (纯 Lua 代码版)
--- ==========================================
+
+-- 🐾 自定义剪贴板提示功能
 
 -- 1. 监听【复制】和【剪切】操作
 vim.api.nvim_create_autocmd("TextYankPost", {

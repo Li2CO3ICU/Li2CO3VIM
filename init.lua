@@ -1,6 +1,7 @@
 require("plugins.lazy")
 require("core.cfg")
 require("core.keymap")
+require("core.tablemode")
 require("plugins.lualine")
 require("plugins.nvim-tree")
 require("plugins.telescope")

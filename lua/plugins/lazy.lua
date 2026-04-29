@@ -30,6 +30,7 @@ local plugins = {
 	"christoomey/vim-tmux-navigator",
 	{ "RRethy/base16-nvim", lazy = false, priority = 1000 },
 	"sphamba/smear-cursor.nvim",
+	'dhruvasagar/vim-table-mode',
 
 	-- Treesitter 语法高亮
 	{

@@ -2,6 +2,8 @@
 local keymap = vim.keymap
 
 -- ---------- 插入模式 ---------- ---
+keymap.set("n", " w", ":w<CR>")
+keymap.set("n", " q", ":q<CR>")
 keymap.set("i", "jk", "<ESC>")
 
 -- ---------- 视觉模式 ---------- ---
@@ -27,4 +29,4 @@ keymap.set('n', ' fb', ":Telescope buffers<CR>")
 keymap.set('n', ' fh', ":Telescope help_tags<CR>")
 
 -- find_files --
-keymap.set('n', ':', '<cmd>FineCmdline<CR>')
+-- keymap.set('n', ':', '<cmd>FineCmdline<CR>')

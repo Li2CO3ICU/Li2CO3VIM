@@ -3,20 +3,20 @@
 require('base16-colorscheme').setup({
   base00 = '#006688', -- 背景
   base01 = '#006688', --较浅的背景色
-  base02 = '#d0e4ff',
+  base02 = '#d1e5f3',
   base03 = '#006688', -- 键盘字符，匹配大括号
-  base04 = '#bec8d0',
+  base04 = '#c6c6c6',
   base05 = '#77d1ff', -- 括号，运算符
-  base06 = '#283238',
-  base07 = '#313b41',
+  base06 = '#303030',
+  base07 = '#393939',
 
-  base08 = '#b2c6f9',-- 变量名
-  base09 = '#d0e4ff', -- 整数、布尔值 (True/False)。
-  base0A = '#b0c9e7', --类名 (Class)、搜索匹配到的背景
+  base08 = '#c9c1ea',-- 变量名
+  base09 = '#d1e5f3', -- 整数、布尔值 (True/False)。
+  base0A = '#b5c9d7', --类名 (Class)、搜索匹配到的背景
   base0B = '#77d1ff', -- 字符串
-  base0C = '#b2c6f9',
+  base0C = '#c9c1ea',
   base0D = '#004d68', -- 函数名
-  base0E = '#b0c9e7', -- 关键词 (if, else, return, import)。
+  base0E = '#b5c9d7', -- 关键词 (if, else, return, import)。
   base0F = '#ffb4ab',
 })
 
@@ -33,20 +33,20 @@ end
 
 -- Make selected text stand out more
 vim.api.nvim_set_hl(0, 'Visual', {
-  bg = '#dae4ec', -- 选中文字背景
-  fg = '#0b151a', -- 选中文字颜色
+  bg = '#e2e2e2', -- 选中文字背景
+  fg = '#131313', -- 选中文字颜色
 })
 
 set_hl_mutliple({ 'TSComment', 'Comment' }, {
-  fg = '#889299', -- 注释
+  fg = '#919191', -- 注释
 })
 
 set_hl_mutliple({ 'TSMethod', 'Method' }, {
-  fg = '#b2c6f9',
+  fg = '#c9c1ea',
 })
 
 set_hl_mutliple({ 'TSFunction', 'Function' }, {
-  fg = '#b0c9e7',
+  fg = '#b5c9d7',
 })
 
 vim.api.nvim_set_hl(0, 'Keyword', {
@@ -54,6 +54,6 @@ vim.api.nvim_set_hl(0, 'Keyword', {
 })
 
 vim.api.nvim_set_hl(0, 'MsgArea', {
-  bg = '#b0c9e7', --底边
+  bg = '#b5c9d7', --底边
   fg = '#77d1ff',
 })

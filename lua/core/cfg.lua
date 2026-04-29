@@ -70,3 +70,25 @@ end
 
 vim.opt.shell = "/usr/bin/fish"
 
+
+
+-- 中文标点自动转英文标点 (仅在插入模式下)
+local punctuation_map = {
+    ["！"] = "!",
+    ["（"] = "(",
+    ["）"] = ")",
+    ["‘"] = "'",
+    ["“"] = '"',
+    ["，"] = ",",
+    ["。"] = ".",
+    ["？"] = "?",
+    ["【"] = "[",
+    ["】"] = "]",
+    ["·"] = "`",
+    ["："] = ":",
+    ["；"] = ";",
+}
+
+for zh, en in pairs(punctuation_map) do
+    vim.keymap.set('i', zh, en, { noremap = true, silent = true })
+end
